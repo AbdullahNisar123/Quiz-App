@@ -6,7 +6,7 @@ const data = [
     category: "Science: Computers",
     question: "Which programming language shares its name with an island in Indonesia?",
     correct_answer: "Java",
-    incorrect_answers: ["Python", "C", "Jakarta"],
+    options: ["Python", "C", "Jakarta", "Java"],
   },
   {
     type: "multiple",
@@ -14,7 +14,7 @@ const data = [
     category: "Science: Computers",
     question: "According to the International System of Units, how many bytes are in a kilobyte of RAM?",
     correct_answer: "1000",
-    incorrect_answers: ["512", "1024", "500"],
+    options: ["512", "1024", "500", "1000"],
   },
   {
     type: "multiple",
@@ -22,7 +22,12 @@ const data = [
     category: "Science: Computers",
     question: "Which computer hardware device provides an interface for all other connected devices to communicate?",
     correct_answer: "Motherboard",
-    incorrect_answers: ["Central Processing Unit", "Hard Disk Drive", "Random Access Memory"],
+    options: [
+      "Central Processing Unit",
+      "Hard Disk Drive",
+      "Random Access Memory",
+      "Motherboard",
+    ],
   },
   {
     type: "multiple",
@@ -30,7 +35,7 @@ const data = [
     category: "Science: Computers",
     question: "How many values can a single byte represent?",
     correct_answer: "256",
-    incorrect_answers: ["8", "1", "1024"],
+    options: ["8", "1", "1024", "256"],
   },
   {
     type: "multiple",
@@ -38,7 +43,7 @@ const data = [
     category: "Science: Computers",
     question: "What is the code name for the mobile operating system Android 7.0?",
     correct_answer: "Nougat",
-    incorrect_answers: ["Ice Cream Sandwich", "Jelly Bean", "Marshmallow"],
+    options: ["Ice Cream Sandwich", "Jelly Bean", "Marshmallow", "Nougat"],
   },
   {
     type: "multiple",
@@ -46,7 +51,7 @@ const data = [
     category: "Science: Computers",
     question: "How long is an IPv6 address?",
     correct_answer: "128 bits",
-    incorrect_answers: ["32 bits", "64 bits", "128 bytes"],
+    options: ["32 bits", "64 bits", "128 bytes", "128 bits"],
   },
   {
     type: "multiple",
@@ -54,7 +59,7 @@ const data = [
     category: "Science: Computers",
     question: "What is the name of Layer 7 of the OSI model?",
     correct_answer: "Application",
-    incorrect_answers: ["Session", "Network", "Presentation"],
+    options: ["Session", "Network", "Presentation", "Application"],
   },
   {
     type: "multiple",
@@ -62,7 +67,7 @@ const data = [
     category: "Science: Computers",
     question: "If you were to code software in this language you'd only be able to type 0's and 1's.",
     correct_answer: "Binary",
-    incorrect_answers: ["JavaScript", "C++", "Python"],
+    options: ["JavaScript", "C++", "Python", "Binary"],
   },
   {
     type: "multiple",
@@ -70,7 +75,7 @@ const data = [
     category: "Science: Computers",
     question: "In any programming language, what is the most common way to iterate through an array?",
     correct_answer: "'For' loops",
-    incorrect_answers: ["'If' Statements", "'Do-while' loops", "'While' loops"],
+    options: ["'If' Statements", "'Do-while' loops", "'While' loops", "'For' loops"],
   },
   {
     type: "multiple",
@@ -78,7 +83,7 @@ const data = [
     category: "Science: Computers",
     question: "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn't get modified?",
     correct_answer: "Final",
-    incorrect_answers: ["Static", "Private", "Public"],
+    options: ["Static", "Private", "Public", "Final"],
   },
 ];
 

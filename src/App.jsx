@@ -30,11 +30,16 @@ import Header from './components/header'
 import HomePage from './components/HomePage'
 import QuizPage from './components/QuizPage'
 import questions from "./questions"
+import ResultPage from './components/ResultPage'
 
 function App() {
   // const [data, setData] = useState([])
-  const [loading, setLoading] = useState(true)
+
+
+  const [loading, setLoading] = useState(false)
   const [questinIndex, setQuestinIndex] = useState(0)
+  const [showResult, setShowResult] = useState(false)
+  const [result, setResult] = useState({})
   // useEffect(() => {
   //   fetch("https://opentdb.com/api.php?amount=10&category=18&difficulty=easy&type=multiple")
   //     .then((response) => response.json())
@@ -50,22 +55,44 @@ function App() {
   //       setLoading(false)
   //     })
   // }, [])
-  const question = questions[questinIndex]
-  console.log(question);
+  const { question, correct_answer, options, } = questions[questinIndex]
+
+
+  const nextQuestion = (answerIndex) => {
+
+
+    setResult((preReult) => ({
+      ...preReult,
+      [questinIndex]: answerIndex
+    }))
+
+
+
+    if (questinIndex < questions.length - 1) {
+      setQuestinIndex(pre => pre + 1)
+    }
+    else {
+      setShowResult(true)
+    }
+  }
+
   
-if(loading){
-  return(
-     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-purple-900 text-white">
-      <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-pink-500 border-solid"></div>
-    </div>
-  )
-}
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-purple-900 text-white">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-pink-500 border-solid"></div>
+      </div>
+    )
+  }
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-purple-900 via-purple-800 to-purple-900 text-white font-sans">
       <div className="text-center mb-10">
         <div className="text-4xl font-bold tracking-widest">REACTQUIZ</div><br /><br />
         {/* <HomePage/> */}
-        <QuizPage  />
+        {!showResult
+          ? <QuizPage qustionNum={question} answer={correct_answer} options={options} onAnswer={nextQuestion} />
+          : <ResultPage result={result} />
+        }
       </div>
     </div>
   )
