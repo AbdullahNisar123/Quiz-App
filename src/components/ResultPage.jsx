@@ -1,6 +1,6 @@
-import questions from "../questions"
+// import questions from "../questions"
 import { useState } from "react";
-export default function ResultPage({ result }) {
+export default function ResultPage({ result ,onRestart,questions}) {
 
 
   const correct_answer = questions.reduce((total, question, index) => {
@@ -13,9 +13,8 @@ export default function ResultPage({ result }) {
   }, 0)
 
   const total = questions.length
-  const incorrect = total-correct_answer
-  console.log(correct_answer);
-  
+  const incorrect = total - correct_answer
+
   return (
     <>
       <div className="bg-purple-950/70 p-10 rounded-2xl shadow-lg w-[600px] max-w-full text-center">
@@ -26,11 +25,11 @@ export default function ResultPage({ result }) {
             <p className="text-sm">Skipped</p>
           </div>
           <div>
-            <span className="text-2xl font-bold">{correct_answer/total*100}%</span>
+            <span className="text-2xl font-bold">{correct_answer / total * 100}%</span>
             <p className="text-sm">Answered Correctly</p>
           </div>
           <div>
-            <span className="text-2xl font-bold">{incorrect/total*100}%</span>
+            <span className="text-2xl font-bold">{incorrect / total * 100}%</span>
             <p className="text-sm">Answered Incorrectly</p>
           </div>
         </div>
@@ -63,32 +62,13 @@ export default function ResultPage({ result }) {
           })
         }
 
+        <button
+          onClick={onRestart}
+          className="bg-pink-500 hover:bg-pink-600 py-2 px-6 rounded-xl mt-6"
+        >
+          Try Again
+        </button>
 
-        {/* <div>
-          <p className="text-sm">2. What purpose do React hooks serve?</p>
-          <p className="text-green-400 font-semibold">
-            Enabling the use of state and other React features in functional components.
-          </p>
-        </div>
-        
-        <div>
-          <p className="text-sm">4. What is the most common way to create a component in React?</p>
-          <p className="text-red-400 font-semibold">
-            By using the 'new' keyword followed by the component name.
-          </p>
-        </div>
-        <div>
-          <p className="text-sm">5. What does the term 'React state' imply?</p>
-          <p className="text-red-400 font-semibold">
-            The lifecycle phase a React component is in.
-          </p>
-        </div>
-        <div>
-          <p className="text-sm">6. How do you typically render list content in React apps?</p>
-          <p className="text-green-400 font-semibold">
-            By using the map() method to iterate over an array of data and returning JSX.
-          </p>
-        </div> */}
       </div>
     </>
   );

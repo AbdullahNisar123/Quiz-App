@@ -40,6 +40,9 @@ function App() {
   const [questinIndex, setQuestinIndex] = useState(0)
   const [showResult, setShowResult] = useState(false)
   const [result, setResult] = useState({})
+
+  const [shuffledQuestions, setShuffledQuestions] = useState(shuffleQuestions());
+
   // useEffect(() => {
   //   fetch("https://opentdb.com/api.php?amount=10&category=18&difficulty=easy&type=multiple")
   //     .then((response) => response.json())
@@ -55,7 +58,6 @@ function App() {
   //       setLoading(false)
   //     })
   // }, [])
-  const { question, correct_answer, options, } = questions[questinIndex]
 
 
   const nextQuestion = (answerIndex) => {
@@ -76,7 +78,30 @@ function App() {
     }
   }
 
-  
+
+  function shuffleArray(array) {
+    return [...array].sort(() => Math.random() - 0.5);
+  }
+
+
+  function shuffleQuestions() {
+    return shuffleArray(
+      questions.map(q => ({
+        ...q,
+        options: shuffleArray(q.options)
+      }))
+    );
+  }
+
+
+  function restartQuiz() {
+    setShuffledQuestions(shuffleQuestions())
+    setQuestinIndex(0)
+    setResult({})
+    setShowResult(false)
+  }
+
+  const { question, correct_answer, options, } = shuffledQuestions[questinIndex]
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-purple-900 text-white">
@@ -91,7 +116,7 @@ function App() {
         {/* <HomePage/> */}
         {!showResult
           ? <QuizPage qustionNum={question} answer={correct_answer} options={options} onAnswer={nextQuestion} />
-          : <ResultPage result={result} />
+          : <ResultPage result={result} onRestart={restartQuiz} questions={shuffledQuestions}/>
         }
       </div>
     </div>
